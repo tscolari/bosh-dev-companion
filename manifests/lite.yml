@@ -1,0 +1,72 @@
+---
+name: dev-companion
+
+# replace with bosh status --uuid
+director_uuid: <%= `bosh target lite > /dev/null 2>&1 && bosh status --uuid` %>
+
+releases:
+  - name: dev-companion
+    version: latest
+
+jobs:
+  - name: companion
+    instances: 1
+    templates:
+      - name: companion
+        release: dev-companion
+    resource_pool: dev-companion
+    networks:
+      - name: dev-companion
+
+networks:
+  - name: dev-companion
+    subnets:
+      - range: 10.244.50.4/30
+        reserved: [10.244.50.5]
+        static: []
+        cloud_properties:
+          name: random
+      - range: 10.244.50.8/30
+        reserved: [10.244.50.9]
+        static: []
+        cloud_properties:
+          name: random
+      - range: 10.244.50.12/30
+        reserved: [10.244.50.13]
+        static: []
+        cloud_properties:
+          name: random
+      - range: 10.244.50.16/30
+        reserved: [10.244.50.17]
+        static: []
+        cloud_properties:
+          name: random
+      - range: 10.244.50.20/30
+        reserved: [10.244.50.21]
+        static: []
+        cloud_properties:
+          name: random
+
+resource_pools:
+  # not much point in having more than one resource pool, since it's all
+  # in one VM with the same hardware anyway
+  - name: dev-companion
+    network: dev-companion
+    stemcell:
+      name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+      version: latest
+    cloud_properties:
+      name: dev-companion
+
+compilation:
+  workers: 3
+  network: dev-companion
+  cloud_properties:
+    name: random
+
+update:
+  canaries: 1
+  max_in_flight: 3
+  serial: false
+  canary_watch_time: 1000-240000
+  update_watch_time: 1000-240000
