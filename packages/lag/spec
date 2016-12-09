@@ -1,0 +1,18 @@
+---
+name: lag
+
+dependencies:
+- golang
+
+files:
+  - code.cloudfoundry.org/lager/*.go # gosub
+  - code.cloudfoundry.org/lager/chug/*.go # gosub
+  - github.com/fatih/color/*.go # gosub
+  - github.com/jroimartin/gocui/*.go # gosub
+  - github.com/mattn/go-colorable/*.go # gosub
+  - github.com/mattn/go-isatty/*.go # gosub
+  - github.com/mattn/go-runewidth/*.go # gosub
+  - github.com/nsf/termbox-go/*.go # gosub
+  - github.com/tscolari/lag/*.go # gosub
+  - github.com/tscolari/lag/parser/*.go # gosub
+  - github.com/tscolari/lag/ui/*.go # gosub

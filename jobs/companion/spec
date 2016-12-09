@@ -1,0 +1,6 @@
+---
+name: companion
+templates: {}
+
+packages:
+- lag
