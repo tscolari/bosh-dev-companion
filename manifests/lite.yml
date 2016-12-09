@@ -18,6 +18,10 @@ jobs:
     networks:
       - name: dev-companion
 
+properties:
+  companion:
+    apt-packages:
+      - tree
 networks:
   - name: dev-companion
     subnets:

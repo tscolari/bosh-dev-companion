@@ -1,0 +1,6 @@
+#!/bin/bash
+
+<% if Array(p("companion.apt-packages")).size > 0 %>
+apt-get update
+apt-get install -y <%= Array(p("companion.apt-packages")).join(" ") %>
+<% end %>

@@ -1,6 +1,13 @@
 ---
 name: companion
-templates: {}
+templates:
+  apt-install.erb: bin/apt-install
+  pre-start.erb: bin/pre-start
 
 packages:
 - lag
+
+properties:
+  companion.apt-packages:
+    descrition: "A list of packages to install with apt-get"
+    default: []
